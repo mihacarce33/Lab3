@@ -128,10 +128,10 @@ namespace Lab3.Controllers
         {
            // Patient aha = new Patient() { Name = "asdoja", Age = 2, Gender = "male", PatientCode = 55555 };
             var patient = db.Patients.Find(model.PatientId);
-            var doctor = db.Doctors.Find(model.DoctorId);
+            var doctor = db.Doctors.Find(model.doctor.Id);
             doctor.patients.Add(patient);
             db.SaveChanges();
-            return View("Index", db.Patients.ToList());
+            return RedirectToAction("Details/" + doctor.Id);
         }
 
         protected override void Dispose(bool disposing)
